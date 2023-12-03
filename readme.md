@@ -1,4 +1,4 @@
-# Not working in production, I'm fixing it.
+# Not tested in production yet, will be tested today IA.
 # Fiction Expo Social Auth
 
 Fiction Expo Social Auth is a social media authentication helper developed by Fiction Developers. For more information, visit [fictiondevelopers.com/auth-system](https://fictiondevelopers.com/auth-system).
