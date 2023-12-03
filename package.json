@@ -1,6 +1,6 @@
 {
   "name": "fiction-expo-social-auth",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Effortless login provider for social media, skip long headaches of managing credentials and ejecting your apps, just use this package",
   "main": "index.js",
   "scripts": {

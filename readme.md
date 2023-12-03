@@ -6,6 +6,8 @@ Fiction Expo Social Auth is a social media authentication helper developed by Fi
 We know the hurdle you have to go through to just manage the social media logins for your react-native/expo apps. You have to setup so many so many credentials on your developer account, later it's almost impossible to move it to client's accounts or to remember which project/account you used for configuration, and I know google doesn't allow that many projects to create. So just use this package get your job done under 5 minutes!
 
 
+** Note: we don't keep user's data at all, everything is sent to your app and erased from our sessions instantly, so you don't have to worry about your privacy **
+
 ## Check our Roadmap
 
 - [x] Google (Achieved)
@@ -49,7 +51,30 @@ To use Fiction Expo Social Auth in your project, follow these steps:
 
 # Example:
 ```
-creating after publishing the package
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { fictionLogin } from 'fiction-expo-social-auth'
+export default function App() {
+
+  const doLogin=async()=>{
+    let result = await fictionLogin("google"); // control the social media type here
+    console.log(result); // do whatever with result
+  }
+  return (
+    <View style={styles.container}>
+      <Button title="Login" onPress={doLogin} />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
 ```
 
 For more information and usage examples, refer to the [documentation](https://fictiondevelopers.com/auth-system).
