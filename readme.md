@@ -10,10 +10,10 @@ We know the hurdle you have to go through to just manage the social media logins
 
 ## Check our Roadmap
 
-- [x] Google (Achieved)
+- [✅] Google (Achieved)
 - [ ] Facebook (Under Development)
 - [ ] Apple (Planned)
-- [ ] GitHub (Planned)
+- [✅] GitHub (Acheived) - almost, sometimes displayName & email will be made out of user's username
 - [ ] LinkedIn (Planned)
 - [ ] Twitter (Planned)
 - [ ] Others (Planned)
