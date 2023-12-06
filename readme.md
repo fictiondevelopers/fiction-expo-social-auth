@@ -78,3 +78,16 @@ const styles = StyleSheet.create({
 ```
 
 For more information and usage examples, refer to the [documentation](https://fictiondevelopers.com/auth-system).
+
+
+
+Ping me if you have any problems at:
+whatsapp: +923009550284
+email: csgenius786@gmail.com
+
+Buy me coffee?
+
+BuyMeCoffee Wallet
+```
+https://www.buymeacoffee.com/rndeveloper
+```
