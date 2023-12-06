@@ -14,7 +14,7 @@ We know the hurdle you have to go through to just manage the social media logins
 - [ ] Facebook (Under Development)
 - [ ] Apple (Planned)
 - [✅] GitHub (Acheived) - almost, sometimes displayName & email will be made out of user's username
-- [ ] LinkedIn (Planned)
+- [✅] LinkedIn (Acheived) - watchout for "id" please, I'm returning it, but not positive if that's the id
 - [ ] Twitter (Planned)
 - [ ] Others (Planned)
 
