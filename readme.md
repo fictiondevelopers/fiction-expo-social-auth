@@ -89,5 +89,5 @@ Buy me coffee?
 
 BuyMeCoffee Wallet
 ```
-https://www.buymeacoffee.com/rndeveloper
+https://www.buymeacoffee.com/mahevstark
 ```
