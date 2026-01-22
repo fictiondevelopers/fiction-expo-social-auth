@@ -1,12 +1,13 @@
 # Fiction Expo Social Auth
 
-Effortless social authentication for **React Native (Expo)**, **React Web**, and **Next.js**. Supports Google and Apple Sign-In with a unified API.
+Effortless social authentication for **React Native (Expo)**, **React Web**, and **Next.js**. Supports Google, Facebook, and Apple Sign-In with a unified API.
 
 > **No credential management headaches!** Skip the hassle of managing OAuth credentials across projects. Use this package to get social login working in under 5 minutes.
 
 ## Features
 
 - ✅ **Google Sign-In** - Full support across all platforms
+- ✅ **Facebook Sign-In** - OAuth flow for all platforms
 - ✅ **Apple Sign-In** - Native on iOS, web fallback on other platforms
 - ✅ **TypeScript** - Full type definitions included
 - ✅ **Cross-platform** - React Native (Expo), React Web, Next.js
@@ -15,12 +16,11 @@ Effortless social authentication for **React Native (Expo)**, **React Web**, and
 
 ## Supported Platforms
 
-| Platform | Google | Apple |
-|----------|--------|-------|
-| React Native (iOS) | ✅ | ✅ Native |
-| React Native (Android) | ✅ | ✅ Web fallback |
-| React Web | ✅ | ✅ |
-| Next.js | ✅ | ✅ |
+| Platform | Google | Facebook | Apple |
+|----------|--------|----------|-------|
+| React Native (iOS) | ✅ | ✅ | ✅ Native |
+| React Native (Android) | ✅ | ✅ | ✅ Web fallback |
+| React Web | ✅ | ✅ | ✅ |
 
 ## Installation
 
@@ -48,19 +48,37 @@ No additional dependencies required!
 import { useSocialLogin } from 'fiction-expo-social-auth';
 
 function LoginScreen() {
-  const { login, loading, error } = useSocialLogin('google');
+  const google = useSocialLogin('google');
+  const facebook = useSocialLogin('facebook');
+  const apple = useSocialLogin('apple');
   
-  const handleLogin = async () => {
-    const result = await login();
+  const handleGoogleLogin = async () => {
+    const result = await google.login();
+    if (result.action === 'success') {
+      console.log('Welcome,', result.user.email);
+    }
+  };
+
+  const handleFacebookLogin = async () => {
+    const result = await facebook.login();
     if (result.action === 'success') {
       console.log('Welcome,', result.user.email);
     }
   };
   
   return (
-    <button onClick={handleLogin} disabled={loading}>
-      {loading ? 'Signing in...' : 'Sign in with Google'}
-    </button>
+    <View>
+      <Button 
+        onPress={handleGoogleLogin} 
+        disabled={google.loading}
+        title={google.loading ? 'Signing in...' : 'Sign in with Google'}
+      />
+      <Button 
+        onPress={handleFacebookLogin} 
+        disabled={facebook.loading}
+        title={facebook.loading ? 'Signing in...' : 'Sign in with Facebook'}
+      />
+    </View>
   );
 }
 ```
@@ -68,10 +86,13 @@ function LoginScreen() {
 ### Using Direct Functions
 
 ```tsx
-import { googleLogin, appleLogin } from 'fiction-expo-social-auth';
+import { googleLogin, facebookLogin, appleLogin } from 'fiction-expo-social-auth';
 
 // Google Sign-In
 const result = await googleLogin();
+
+// Facebook Sign-In
+const result = await facebookLogin();
 
 // Apple Sign-In
 const result = await appleLogin();
@@ -82,10 +103,23 @@ const result = await appleLogin();
 ```tsx
 import { fictionLogin } from 'fiction-expo-social-auth';
 
-const result = await fictionLogin('google'); // or 'apple'
+const result = await fictionLogin('google'); // or 'facebook', 'apple'
 console.log(result);
 // { action: 'success', email: '...', name: '...', photo: '...', id: '...' }
 ```
+
+## Facebook Setup
+
+1. Create a Facebook App at [developers.facebook.com](https://developers.facebook.com)
+2. Add **Facebook Login** product
+3. Configure **Valid OAuth Redirect URIs** in Facebook Login Settings:
+   - `https://your-backend.com/api/account/facebook/callback`
+4. Add App ID and Secret to your backend `.env`:
+   ```
+   NEXT_PUBLIC_FACEBOOK_CLIENT_ID=your_app_id
+   FACEBOOK_CLIENT_SECRET=your_app_secret
+   NEXT_PUBLIC_FACEBOOK_CALLBACK_URL=https://your-backend.com/api/account/facebook/callback
+   ```
 
 ## Apple Sign-In Setup
 
@@ -120,6 +154,7 @@ React hook for social authentication.
 
 ```typescript
 const { login, loading, error, result, reset } = useSocialLogin('google');
+// provider: 'google' | 'facebook' | 'apple'
 ```
 
 | Property | Type | Description |
@@ -154,7 +189,7 @@ const { login, loading, error, result, reset } = useSocialLogin('google');
 ## Error Handling
 
 ```typescript
-const { login, error } = useSocialLogin('apple');
+const { login, error } = useSocialLogin('facebook');
 
 const handleLogin = async () => {
   const result = await login();
