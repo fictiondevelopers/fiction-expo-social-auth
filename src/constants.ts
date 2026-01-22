@@ -3,7 +3,7 @@
  */
 
 // Backend URL for OAuth handling
-export const AUTH_BACKEND_URL = 'https://our-app-delta.vercel.app';
+export const AUTH_BACKEND_URL = 'https://our-app-umber.vercel.app';
 
 // Supported authentication providers
 export const PROVIDERS = {
