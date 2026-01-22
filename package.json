@@ -1,10 +1,26 @@
 {
   "name": "fiction-expo-social-auth",
-  "version": "1.0.5",
-  "description": "Effortless login provider for social media, skip long headaches of managing credentials and ejecting your apps, just use this package",
-  "main": "index.js",
+  "version": "2.0.0",
+  "description": "Effortless social authentication for React Native (Expo), React Web, and Next.js. Supports Google and Apple Sign-In with a unified API.",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "index.js"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "echo \"Tests not yet configured\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -12,7 +28,15 @@
   },
   "keywords": [
     "social-media-login-provider",
-    "effortless-social-logins"
+    "effortless-social-logins",
+    "expo",
+    "react-native",
+    "expo-auth",
+    "google-signin",
+    "apple-signin",
+    "oauth",
+    "nextjs",
+    "react"
   ],
   "author": "Fiction Developers",
   "license": "ISC",
@@ -20,17 +44,27 @@
     "url": "https://github.com/fictiondevelopers/fiction-expo-social-auth/issues"
   },
   "homepage": "https://github.com/fictiondevelopers/fiction-expo-social-auth#readme",
-  "dependencies": {
-    "expo": "~49.0.15",
-    "expo-auth-session": "~5.0.2",
-    "expo-linking": "~5.0.2",
-    "expo-status-bar": "~1.6.0",
-    "expo-web-browser": "~12.3.2",
-    "passport-facebook": "^3.0.0",
-    "react": "18.2.0",
-    "react-native": "0.72.6"
+  "peerDependencies": {
+    "expo-apple-authentication": ">=6.0.0",
+    "expo-linking": ">=5.0.0",
+    "expo-web-browser": ">=12.0.0",
+    "react": ">=17.0.0"
+  },
+  "peerDependenciesMeta": {
+    "expo-apple-authentication": {
+      "optional": true
+    },
+    "expo-linking": {
+      "optional": true
+    },
+    "expo-web-browser": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@types/node": "^25.0.10",
+    "@types/react": "^18.2.0",
+    "typescript": "^5.0.0"
   }
 }
