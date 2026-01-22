@@ -1,6 +1,6 @@
 {
   "name": "fiction-expo-social-auth",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Effortless social authentication for React Native (Expo), React Web, and Next.js. Supports Google and Apple Sign-In with a unified API.",
   "main": "dist/index.js",
   "module": "dist/index.js",
