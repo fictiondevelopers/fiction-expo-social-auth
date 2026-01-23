@@ -1,7 +1,7 @@
 {
   "name": "fiction-expo-social-auth",
-  "version": "2.0.1",
-  "description": "Effortless social authentication for React Native (Expo), React Web, and Next.js. Supports Google and Apple Sign-In with a unified API.",
+  "version": "2.2.0",
+  "description": "Effortless social authentication for React, React Native (Expo), Vue.js, Svelte, and Next.js. Supports Google, Facebook, and Apple Sign-In with a unified API.",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,6 +10,16 @@
       "import": "./dist/index.js",
       "require": "./dist/index.js",
       "types": "./dist/index.d.ts"
+    },
+    "./vue": {
+      "import": "./dist/vue/index.js",
+      "require": "./dist/vue/index.js",
+      "types": "./dist/vue/index.d.ts"
+    },
+    "./svelte": {
+      "import": "./dist/svelte/index.js",
+      "require": "./dist/svelte/index.js",
+      "types": "./dist/svelte/index.d.ts"
     }
   },
   "files": [
@@ -34,9 +44,15 @@
     "expo-auth",
     "google-signin",
     "apple-signin",
+    "facebook-signin",
     "oauth",
     "nextjs",
-    "react"
+    "react",
+    "vue",
+    "vue3",
+    "svelte",
+    "social-auth",
+    "universal"
   ],
   "author": "Fiction Developers",
   "license": "ISC",
@@ -48,7 +64,9 @@
     "expo-apple-authentication": ">=6.0.0",
     "expo-linking": ">=5.0.0",
     "expo-web-browser": ">=12.0.0",
-    "react": ">=17.0.0"
+    "react": ">=17.0.0",
+    "vue": ">=3.0.0",
+    "svelte": ">=3.0.0"
   },
   "peerDependenciesMeta": {
     "expo-apple-authentication": {
@@ -59,12 +77,23 @@
     },
     "expo-web-browser": {
       "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
     }
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/node": "^25.0.10",
     "@types/react": "^18.2.0",
-    "typescript": "^5.0.0"
+    "svelte": "^4.0.0",
+    "typescript": "^5.0.0",
+    "vue": "^3.3.0"
   }
 }
