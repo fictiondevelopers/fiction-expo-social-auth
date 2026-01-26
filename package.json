@@ -1,6 +1,6 @@
 {
   "name": "fiction-expo-social-auth",
-  "version": "2.2.0",
+  "version": "2.6.0",
   "description": "Effortless social authentication for React, React Native (Expo), Vue.js, Svelte, and Next.js. Supports Google, Facebook, and Apple Sign-In with a unified API.",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -20,6 +20,11 @@
       "import": "./dist/svelte/index.js",
       "require": "./dist/svelte/index.js",
       "types": "./dist/svelte/index.d.ts"
+    },
+    "./angular": {
+      "import": "./dist/angular/index.js",
+      "require": "./dist/angular/index.js",
+      "types": "./dist/angular/index.d.ts"
     }
   },
   "files": [
@@ -51,6 +56,7 @@
     "vue",
     "vue3",
     "svelte",
+    "angular",
     "social-auth",
     "universal"
   ],

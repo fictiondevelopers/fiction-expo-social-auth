@@ -31,6 +31,7 @@ Get Google, Facebook, and Apple Sign-In working in **under 5 minutes** — no OA
 | React Native (Expo) | ✅ | ✅ | ✅ Native |
 | Vue.js 3 | ✅ | ✅ | ✅ |
 | Svelte | ✅ | ✅ | ✅ |
+| Angular | ✅ | ✅ | ✅ |
 
 ---
 
@@ -121,6 +122,33 @@ const facebook = useSocialLogin('facebook');
 
 ---
 
+### Angular
+
+```typescript
+// In your component
+import { Component } from '@angular/core';
+import { SocialLoginService, createSocialLoginService } from 'fiction-expo-social-auth/angular';
+
+@Component({
+  selector: 'app-login',
+  template: `
+    <button (click)="login()" [disabled]="auth.loading">
+      {{ auth.loading ? 'Signing in...' : 'Sign in with Google' }}
+    </button>
+    <div *ngIf="auth.user">Welcome, {{ auth.user.name }}!</div>
+  `
+})
+export class LoginComponent {
+  auth = createSocialLoginService();
+  
+  async login() {
+    await this.auth.loginWithGoogle();
+  }
+}
+```
+
+---
+
 ### Direct Functions (Any Framework)
 
 ```javascript
@@ -133,6 +161,9 @@ if (result.action === 'success') {
   console.log('Email:', result.user.email);
   console.log('Name:', result.user.name);
   console.log('Photo:', result.user.photo);
+  if (result.user.phoneNumber) {
+    console.log('Phone:', result.user.phoneNumber);
+  }
 }
 ```
 

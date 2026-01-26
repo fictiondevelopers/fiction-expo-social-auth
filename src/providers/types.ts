@@ -12,6 +12,7 @@ export interface AuthUser {
     email: string;
     name: string;
     photo: string;
+    phoneNumber?: string;
 }
 
 /**
