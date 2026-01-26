@@ -42,6 +42,7 @@ export const paramsToAuthResult = (params: Record<string, string>): AuthResult =
             email: params.email,
             name: params.name || '',
             photo: params.photo || '',
+            phoneNumber: params.phoneNumber,
         };
 
         return {

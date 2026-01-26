@@ -1,5 +1,8 @@
 /**
  * Platform detection utilities
+ * 
+ * This module detects the current platform (iOS, Android, Web)
+ * and works in React Native, Expo, Vue, Svelte, and plain web environments.
  */
 
 import { PlatformInfo } from '../providers/types';
@@ -23,9 +26,12 @@ export const getPlatformInfo = (): PlatformInfo => {
     if (isReactNative) {
         // In React Native, check Platform module
         try {
-            // Dynamic import to avoid bundling issues on web
-            // @ts-ignore
-            const { Platform } = require('react-native');
+            // Use dynamic require to prevent bundlers from resolving react-native in web builds
+            // The variable indirection prevents static analysis
+            const moduleName = 'react-native';
+            // @ts-ignore - Dynamic require
+            const RN = require(moduleName);
+            const Platform = RN.Platform;
             isIOS = Platform.OS === 'ios';
             isAndroid = Platform.OS === 'android';
         } catch (e) {
@@ -33,10 +39,10 @@ export const getPlatformInfo = (): PlatformInfo => {
             isWeb = true;
         }
     } else {
-        // In web environment
+        // In web environment (React Web, Vue, Svelte, etc.)
         isWeb = true;
 
-        // Check user agent for iOS web
+        // Check user agent for iOS/Android web browsers
         if (typeof navigator !== 'undefined') {
             const ua = navigator.userAgent || '';
             isIOS = /iPhone|iPad|iPod/i.test(ua);
@@ -65,9 +71,10 @@ export const isNativeAppleAuthAvailable = async (): Promise<boolean> => {
     }
 
     try {
-        // Try to check if expo-apple-authentication is available
-        // @ts-ignore
-        const AppleAuthentication = require('expo-apple-authentication');
+        // Use dynamic require to prevent bundlers from resolving in web builds
+        const moduleName = 'expo-apple-authentication';
+        // @ts-ignore - Dynamic require
+        const AppleAuthentication = require(moduleName);
         return await AppleAuthentication.isAvailableAsync();
     } catch (e) {
         return false;

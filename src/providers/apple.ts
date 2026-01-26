@@ -9,6 +9,9 @@ import { handleError, logError, SocialAuthError } from '../utils/errorHandler';
 import { getPlatformInfo, isNativeAppleAuthAvailable } from '../utils/platform';
 import { buildAuthUrl, parseCallbackUrl, paramsToAuthResult } from '../utils/urlParser';
 
+
+
+
 /**
  * Perform Apple login
  * Uses native authentication on iOS, web OAuth on other platforms
